@@ -1,0 +1,11 @@
+$colorButtonStyle: #bd10e0;
+$bgButton: #fff;
+
+.btnDefault{
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: $bgButton;
+    color: $colorButtonStyle;
+    border: 1px solid $colorButtonStyle;
+}
