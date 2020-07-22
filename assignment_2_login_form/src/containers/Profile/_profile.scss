@@ -2,7 +2,7 @@
 @import "../../components/Button/button";
 
 $headerColor: #4d0c5a;
-$colorFontHeader: #fff;
+$colorFont: #fff;
 $colorFontSection: #212020;
 $colorFontChangePass: #bfc2d3;
 $pLabel: 0 10px;
@@ -31,13 +31,13 @@ header {
   justify-content: center;  
   .title {
     @include fontStyle(bold, 32px);
-    color: $colorFontHeader;
+    color: $colorFont;
   }
 
   .subtitle {
     @include fontStyle();
 
-    color: $colorFontHeader;
+    color: $colorFont;
     opacity: 0.8;
   }
 }
@@ -120,6 +120,8 @@ section {
         border-radius: 30px;
         text-align: center;
         margin-top: 40px;
+        outline: none;
+        transition: all .3s ease-in-out;
       }
 
       .btnLogout {
@@ -127,6 +129,11 @@ section {
         height: 60px;
 
         margin-left: 35px;
+
+        &:hover{
+          background-color: $color_Button1;
+          color: $colorFont;
+        }
 
         @media screen and (max-width: 768px) {
           @include responsiveButton();
@@ -140,6 +147,11 @@ section {
 
         background-color: $color_Button1;
         color: $color_Button2;
+
+        &:hover{
+          background-color: $color_Button2;
+          color: $color_Button1;
+        }
 
         @media screen and (max-width: 768px) {
           @include responsiveButton();

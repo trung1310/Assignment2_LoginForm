@@ -58,8 +58,8 @@ export default function Profile() {
             </div>
           </div>
 
-            <button className='btn btn-primary btnSave' type='button' id='saveButton'>Save</button>
-            <button className='btn btn-primary btnLogout' type='button' id='logoutButton'>Logout</button>
+            <button className='btn btnSave' type='button' id='saveButton'>Save</button>
+            <button className='btn btnLogout' type='button' id='logoutButton'>Logout</button>
           
         </form>
       </section>
