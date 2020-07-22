@@ -64,6 +64,7 @@ export default function LoginForm() {
           </div>
         </form>
       </div>
+      <div className='bgImage'></div>
       <img className='image_section' src={Image} />
     </div>
   );

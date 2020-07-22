@@ -8,7 +8,20 @@
   justify-content: space-between;
   padding: 102px 63px;
 
+  @media screen and (max-width: 768px){
+      flex-direction: column;
+      position: relative;
+  }
+
   .login_section {
+    @media screen and (max-width: 768px){
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .subtitle {
       @include fontStyle(600, 14px);
       margin-top: 72px;
@@ -70,15 +83,23 @@
         .btn{
             @include btnDefault();
             @include fontStyle(bold, 14px);
-
           }
       }
-
-
     }
   }
 
+  .bgImage{
+    @media screen and (max-width: 768px){
+        background: #000000b0;
+        width: 642px;
+        height: 697px;
+      position: absolute;
+      z-index: 1;
+
+    }
+  }
   .image_section {
+    position: relative;
     width: 642px;
     height: 697px;
   }
