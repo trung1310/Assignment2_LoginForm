@@ -11,8 +11,10 @@ $mLine: 23px 0;
 
 @mixin responsiveButton {
     width: 100%;
-    height: 40px;
+    height: 50px;
     font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 header {
@@ -24,6 +26,9 @@ header {
   padding: 0 $pSection;
   margin-top: 45px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
   .title {
     @include fontStyle(bold, 32px);
     color: $colorFontHeader;
@@ -38,13 +43,17 @@ header {
 }
 
 section {
-  padding: 0 $pSection;
+  padding: 38px $pSection;
   height: 697px;
+  margin-bottom: 45px;
   box-shadow: 0 30px 50px 0 rgba(26, 25, 62, 0.2);
+  @media screen and (max-width: 768px){
+    height: auto;
+  }
+  
 
   .profile {
     display: flex;
-    margin-top: 38px;
 
     @media screen and (max-width: 768px){
       flex-direction: column;
@@ -83,10 +92,12 @@ section {
       color: $colorFontChangePass;
     }
 
-    input {
+    .form-control{
+      height: 60px;
       position: relative;
       color: $colorFontSection;
     }
+
     label {
       position: absolute;
       top: -12px;
@@ -108,7 +119,7 @@ section {
         @include fontStyle(bold, 24px);
         border-radius: 30px;
         text-align: center;
-        margin: 40px 0;
+        margin-top: 40px;
       }
 
       .btnLogout {
