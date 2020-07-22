@@ -1,8 +1,6 @@
 import React from 'react';
-import classes from './profile.module.scss';
-import './profile.module.scss'
+import './_profile.scss'
 import Avatar from '../../assets/images/avatar.png'
-import Button from '../../components/Button/Button'
 
 export default function Profile() {
   return (
@@ -22,19 +20,19 @@ export default function Profile() {
           <div className='row mb-2'>
             <div className='form-group col-md-6'>
               <label className='labelName' className="text-center" for='fullName'>Full Name</label>
-              <input className='form-control' type='text' id='fullName' value='Nguyễn Chí Trung'/>
+              <input className='form-control' type='text' id='fullName' placeholder='Nguyễn Chí Trung'/>
             </div>
           </div>
 
           <div className='row mb-2'>
             <div className='form-group col-md-6'>
               <label className='labelEmail' for='email'>Email</label>
-              <input className='form-control' type='email' id='emailInput' value='trung.nguyen@terralogic.com'/>
+              <input className='form-control' type='email' id='emailInput' placeholder='trung.nguyen@terralogic.com'/>
             </div>
 
             <div className='form-group col-md-6'>
               <label className='labelPhone' for='phone'>Phone</label>
-              <input className='form-control' type='text' id='phoneInput' value='111-222-333'/>
+              <input className='form-control' type='text' id='phoneInput' placeholder='111-222-333'/>
             </div>
           </div>
 
@@ -60,9 +58,9 @@ export default function Profile() {
             </div>
           </div>
 
-          <Button className='btnSave' id='btnSave' name='Save'/>
-          <Button className='btnLogout' id='btnLogout' name='Log out'/>
-          <Button  btnDefault={classes.btnLogout} id='btnLogout' name='Log out'/>
+            <button className='btn btn-primary btnSave' type='button' id='saveButton'>Save</button>
+            <button className='btn btn-primary btnLogout' type='button' id='logoutButton'>Logout</button>
+          
         </form>
       </section>
     </div>

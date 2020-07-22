@@ -1,0 +1,12 @@
+$color_Button1: #bd10e0;
+$color_Button2: #fff;
+
+
+@mixin btnDefault{
+    width: 160px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: $color_Button2;
+    color: $color_Button1;
+    border: 1px solid $color_Button1;
+}

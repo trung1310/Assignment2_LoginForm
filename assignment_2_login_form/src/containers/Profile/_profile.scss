@@ -1,0 +1,139 @@
+@import "../../helper/mixins";
+@import "../../components/Button/button";
+
+$headerColor: #4d0c5a;
+$colorFontHeader: #fff;
+$colorFontSection: #212020;
+$colorFontChangePass: #bfc2d3;
+$pLabel: 0 10px;
+$pSection: 92px;
+$mLine: 23px 0;
+
+@mixin responsiveButton {
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+}
+
+header {
+  width: 100%;
+  height: 129px;
+  border-radius: 6px;
+  box-shadow: 0 30px 50px 0 rgba(45, 44, 101, 0.05);
+  background-color: $headerColor;
+  padding: 0 $pSection;
+  margin-top: 45px;
+
+  .title {
+    @include fontStyle(bold, 32px);
+    color: $colorFontHeader;
+  }
+
+  .subtitle {
+    @include fontStyle();
+
+    color: $colorFontHeader;
+    opacity: 0.8;
+  }
+}
+
+section {
+  padding: 0 $pSection;
+  height: 697px;
+  box-shadow: 0 30px 50px 0 rgba(26, 25, 62, 0.2);
+
+  .profile {
+    display: flex;
+    margin-top: 38px;
+
+    @media screen and (max-width: 768px){
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+
+      @media screen and (max-width: 768px){
+        width: 50%;
+        height: 50%;
+      }
+    }
+    .name {
+      @include fontStyle(bold, 32px);
+      margin-left: 24px;
+    }
+  }
+
+  form {
+    margin-top: 43px;
+    .line {
+      width: 100%;
+      height: 2px;
+      margin: $mLine;
+      opacity: 0.4;
+      border: solid 1px #bfc2d3;
+    }
+
+    .changePass {
+      @include fontStyle();
+      margin-bottom: 35px;
+      color: $colorFontChangePass;
+    }
+
+    input {
+      position: relative;
+      color: $colorFontSection;
+    }
+    label {
+      position: absolute;
+      top: -12px;
+      left: 19px;
+      z-index: 1;
+      height: 20px;
+
+      @include fontStyle(normal, 16px);
+      background-color: #fff;
+      border: none;
+      color: $colorFontSection;
+
+      padding: $pLabel;
+    }
+
+
+      .btn {
+        @include btnDefault();
+        @include fontStyle(bold, 24px);
+        border-radius: 30px;
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      .btnLogout {
+        width: 180px;
+        height: 60px;
+
+        margin-left: 35px;
+
+        @media screen and (max-width: 768px) {
+          @include responsiveButton();
+          margin: auto;
+        }
+      }
+
+      .btnSave {
+        width: 133px;
+        height: 60px;
+
+        background-color: $color_Button1;
+        color: $color_Button2;
+
+        @media screen and (max-width: 768px) {
+          @include responsiveButton();
+        }
+      }
+    
+  }
+}
