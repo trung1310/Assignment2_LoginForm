@@ -2,11 +2,17 @@ $size: 18px;
 $font_weight: normal;
 
 @mixin fontStyle($fontWeight: $font_weight, $fontSize: $size) {
-    font-weight: $fontWeight;
-    font-size: $fontSize;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
 
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-  }
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+@mixin iconPosition {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

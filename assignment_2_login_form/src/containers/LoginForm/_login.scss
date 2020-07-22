@@ -1,0 +1,85 @@
+@import "../../helper/mixins";
+@import "../../helper/variables";
+@import "../../components/Button/button";
+
+
+.login_form {
+  display: flex;
+  justify-content: space-between;
+  padding: 102px 63px;
+
+  .login_section {
+    .subtitle {
+      @include fontStyle(600, 14px);
+      margin-top: 72px;
+      margin-bottom: 24px;
+      color: $colorFont2;
+      text-transform: uppercase;
+    }
+
+    .title_login {
+      @include fontStyle(600, 24px);
+    }
+
+    form {
+      label {
+        @include fontStyle(600, 14px);
+        color: $colorFont2;
+      }
+
+      .input_form {
+        width: 350px;
+        height: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
+        border: solid 1px #dfe2e6;
+        background-color: $colorFont;
+        padding-left: 44px;
+      }
+
+      .input_email {
+        position: relative;
+
+        .icon1 {
+          @include iconPosition();
+          left: 12px;
+        }
+      }
+
+      .input_password {
+        position: relative;
+
+        .icon2 {
+          @include iconPosition();
+          left: 12px;
+        }
+
+        .icon3 {
+          @include iconPosition();
+          right: 12px;
+        }
+      }
+      
+      .button_group{
+        width: 350px;
+        padding-top: 30px;
+        margin-bottom: 13px;
+        display: flex;
+        justify-content: space-between;
+
+        .btn{
+            @include btnDefault();
+            @include fontStyle(bold, 14px);
+
+          }
+      }
+
+
+    }
+  }
+
+  .image_section {
+    width: 642px;
+    height: 697px;
+  }
+}

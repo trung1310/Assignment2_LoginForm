@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.scss';
-import Login from './containers/Profile/Profile';
 import Profile from './containers/Profile/Profile';
+import LoginForm from './containers/LoginForm/LoginForm';
 
 function App() {
   return (
     <div className='App'>
-        <Profile />
+        <LoginForm />
+        {/* <Profile /> */}
     </div>
   );
 }
