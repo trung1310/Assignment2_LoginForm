@@ -1,0 +1,37 @@
+@import "../../helper/mixins";
+@import "../../helper/variables";
+@import "../../components/Button/button";
+
+.login_form {
+  .login_section {
+    form {
+      .input_confirmPassword {
+        position: relative;
+        .icon2 {
+          @include iconPosition();
+          left: 12px;
+        }
+        .icon3 {
+          @include iconPosition();
+          right: 12px;
+        }
+      }
+
+      .input_fullName {
+        position: relative;
+        .icon1 {
+          @include iconPosition();
+          left: 12px;
+        }
+      }
+
+      .input_phone {
+        position: relative;
+        .icon1 {
+          @include iconPosition();
+          left: 12px;
+        }
+      }
+    }
+  }
+}
