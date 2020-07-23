@@ -8,13 +8,13 @@ import './_login.scss';
 
 export default function LoginForm() {
   return (
-    <div className='login_form'>
+    <div className='container-fluid login_form'>
       <div className='login_section'>
         <img className='logo_brand' src={Brand_logo} />
         <p className='subtitle'>Start your personal photo experience</p>
         <h1 className='title_login'>Login your account</h1>
 
-        <form className='form-group col-md-12'>
+        <form className='form-group col-md-12 col-sm-12'>
           <div className='form-group'>
           <label className='labelEmail' for='email'>Email</label>
             <div className='input_email'>
@@ -43,10 +43,10 @@ export default function LoginForm() {
           </div>
 
             <div className='button_group'>
-                <button className='btn btn-primary' type='button'>
+                <button className='btn btnRegister' type='button'>
                     Register
                 </button>
-                <button className='btn btn-primary' type='button'>
+                <button className='btn btnLogin' type='button'>
                     Login
                 </button>
             </div>
@@ -64,8 +64,11 @@ export default function LoginForm() {
           </div>
         </form>
       </div>
-      <div className='bgImage'></div>
-      <img className='image_section' src={Image} />
+
+      <div className='overlay'>
+        <img className='image_section' src={Image} />
+      </div>
+      
     </div>
   );
 }
