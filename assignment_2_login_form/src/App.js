@@ -7,9 +7,9 @@ import RegisterForm from './containers/RegisterForm/RegisterForm';
 function App() {
   return (
     <div className='App'>
-        {/* <LoginForm /> */}
-        {/* <Profile /> */}
-        <RegisterForm />
+      <LoginForm />
+      {/* <Profile /> */}
+      {/* <RegisterForm /> */}
     </div>
   );
 }
