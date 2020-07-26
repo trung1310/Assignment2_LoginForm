@@ -9,13 +9,13 @@ export default function RegisterForm() {
   return (
     <div className="container-fluid login_form">
       <div className="login_section">
-        <img className="logo_brand" src={Brand_logo} />
+        <img alt='#img' className="logo_brand" src={Brand_logo} />
         <p className="subtitle">Start your personal photo experience</p>
         <h1 className="title_login">Login your account</h1>
 
         <form className="form-group col-md-12 col-sm-12">
           <div className="form-group">
-            <label className="labelEmail" for="email">
+            <label className="labelEmail" htmlFor="email">
               Email
             </label>
             <div className="input_email">
@@ -25,12 +25,12 @@ export default function RegisterForm() {
                 id="emailRegister"
                 placeholder="Enter your email"
               />
-              <img className="icon1" src={Icon1} />
+              <img alt='#img' className="icon1" src={Icon1} />
             </div>
           </div>
 
           <div className="form-group">
-            <label className="labelPassword" for="password">
+            <label className="labelPassword" htmlFor="password">
               Password
             </label>
             <div className="input_password">
@@ -40,12 +40,12 @@ export default function RegisterForm() {
                 id="passwordRegister"
                 placeholder="Enter your password"
               />
-              <img className="icon2" src={Icon2} />
-              <img className="icon3" src={Icon3} />
+              <img alt='#img' className="icon2" src={Icon2} />
+              <img alt='#img' className="icon3" src={Icon3} />
             </div>
           </div>
           <div className="form-group">
-            <label className="labelConfirmPassword" for="password">
+            <label className="labelConfirmPassword" htmlFor="password">
               Confirm Password
             </label>
             <div className="input_confirmPassword">
@@ -55,12 +55,12 @@ export default function RegisterForm() {
                 id="confirmPassRegister"
                 placeholder="Enter your password"
               />
-              <img className="icon2" src={Icon2} />
-              <img className="icon3" src={Icon3} />
+              <img alt='#img' className="icon2" src={Icon2} />
+              <img alt='#img' className="icon3" src={Icon3} />
             </div>
           </div>
           <div className="form-group">
-            <label className="labelFullName" for="fullname">
+            <label className="labelFullName" htmlFor="fullname">
               Full Name
             </label>
             <div className="input_fullName">
@@ -70,11 +70,11 @@ export default function RegisterForm() {
                 id="fullNameRegister"
                 placeholder="Enter your name"
               />
-              <img className="icon1" src={Icon1} />
+              <img alt='#img' className="icon1" src={Icon1} />
             </div>
           </div>
           <div className="form-group">
-            <label className="labelPhone" for="phone">
+            <label className="labelPhone" htmlFor="phone">
               Phone Number
             </label>
             <div className="input_phone">
@@ -84,7 +84,7 @@ export default function RegisterForm() {
                 id="phoneRegister"
                 placeholder="Enter your phone number"
               />
-              <img className="icon1" src={Icon1} />
+              <img alt='#img' className="icon1" src={Icon1} />
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function RegisterForm() {
       </div>
 
       <div className="overlay">
-        <img className="image_section" src={Image} />
+        <img alt='#img' className="image_section" src={Image} />
       </div>
     </div>
   );

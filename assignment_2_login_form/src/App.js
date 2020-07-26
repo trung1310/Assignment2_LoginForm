@@ -1,16 +1,18 @@
 import React from 'react';
+import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './App.scss';
-import Profile from './containers/Profile/Profile';
-import LoginForm from './containers/LoginForm/LoginForm';
-import RegisterForm from './containers/RegisterForm/RegisterForm';
+
+import AppRoute from "./AppRoute";
+import store from "./store";
 
 function App() {
   return (
-    <div className='App'>
-      <LoginForm />
-      {/* <Profile /> */}
-      {/* <RegisterForm /> */}
-    </div>
+    <Provider store={store}>
+      <AppRoute />
+      <ToastContainer />
+    </Provider>
   );
 }
 
