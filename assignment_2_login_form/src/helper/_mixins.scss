@@ -16,3 +16,11 @@ $font_weight: normal;
   top: 50%;
   transform: translateY(-50%);
 }
+
+@mixin responsiveButton {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

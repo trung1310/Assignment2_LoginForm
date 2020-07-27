@@ -13,9 +13,7 @@ import LoginForm from "./containers/LoginForm/LoginForm";
 import Profile from "./containers/Profile/Profile";
 import RegisterForm from "./containers/RegisterForm/RegisterForm";
 
-const DEFAULT_PATH = "/";
-const LOGIN_PATH = "/login";
-const REGISTER_PATH = "/register";
+import { DEFAULT_PATH, LOGIN_PATH, REGISTER_PATH } from './constants/index';
 
 const AppRoute = () => {
     const { loginStatus, loginResponse } = useSelector((state) => state.login);

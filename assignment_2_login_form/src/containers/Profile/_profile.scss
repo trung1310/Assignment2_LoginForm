@@ -2,50 +2,46 @@
 @import "../../helper/variables";
 @import "../../components/Button/button";
 
-
-@mixin responsiveButton {
-    width: 100%;
-    height: 50px;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
 header {
   width: 100%;
   height: 129px;
   border-radius: 6px;
   box-shadow: 0 30px 50px 0 rgba(45, 44, 101, 0.05);
-  background-color: $headerColor;
+  background-color: $bg-header-color;
   padding: 0 $pSection;
   margin-top: 45px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center; 
+  @media screen and (max-width: 411px){
+    padding: 20px;
+  }
   .title {
     @include fontStyle(bold, 32px);
-    color: $colorFont;
+    color: $font-color-white;
   }
 
   .subtitle {
     @include fontStyle();
 
-    color: $colorFont;
+    color: $font-color-white;
     opacity: 0.8;
   }
 }
 
-section {
-  padding: 38px $pSection;
+.profile_section {
   height: 697px;
+  padding: 20px;
   margin-bottom: 45px;
   box-shadow: 0 30px 50px 0 rgba(26, 25, 62, 0.2);
   @media screen and (max-width: 768px){
     height: auto;
   }
   
-
+   @media screen and (min-width: 768px){
+    padding: 38px $pSection;
+  }
   .profile {
     display: flex;
 
@@ -54,19 +50,53 @@ section {
       justify-content: center;
       align-items: center;
     }
-    .image {
-      width: 50px;
-      height: 50px;
-      border-radius: 50px;
+
+    .avatar{
+      position:relative;
+      .image {
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        cursor: pointer;
+
+
+      @media screen and (min-width: 992px){
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        cursor: pointer;
+      }
 
       @media screen and (max-width: 768px){
         width: 50%;
         height: 50%;
+        cursor: pointer;
       }
     }
+    .edit{
+        position: absolute;
+        top:-14px;
+        right: -10px;
+        cursor: pointer;
+
+      .icon{
+        width: 30px;
+        height:30px;
+        transition: all .6s ease-in-out;
+        
+        &:hover{
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
     .name {
+      font-size: 24px;
+      font-weight: bold;
+      @media screen and (min-width: 768px){
       @include fontStyle(bold, 32px);
       margin-left: 24px;
+  }
     }
   }
 
@@ -83,13 +113,13 @@ section {
     .changePass {
       @include fontStyle();
       margin-bottom: 35px;
-      color: $colorFontChangePass;
+      color: $font-color-gray;
     }
 
     .form-control{
       height: 60px;
       position: relative;
-      color: $colorFontSection;
+      color: $font-color-black;
     }
 
     label {
@@ -102,12 +132,11 @@ section {
       @include fontStyle(normal, 16px);
       background-color: #fff;
       border: none;
-      color: $colorFontSection;
+      color: $font-color-black;
 
       padding: $pLabel;
     }
-
-
+    
       .btn {
         @include btnDefault();
         @include fontStyle(bold, 24px);
@@ -115,6 +144,9 @@ section {
         text-align: center;
         margin-top: 40px;
         outline: none;
+        @media screen and (max-width: 991px){
+         margin-top: -8px;
+      }
       }
 
       .btnLogout {
@@ -125,7 +157,7 @@ section {
 
         &:hover{
           background-color: $color_Button1;
-          color: $colorFont;
+          color: $font-color-white;
         }
 
         @media screen and (max-width: 768px) {

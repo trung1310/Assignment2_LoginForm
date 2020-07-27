@@ -4,163 +4,109 @@
 
 $pTitle: 15px;
 
-
-.login_form {
-  display: flex;
-  justify-content: space-between;
-  padding: 102px 63px;
-
-  @media screen and (max-width: 999px){
-    width: 1;
-  }
-
-  @media screen and (max-width: 768px){
-      flex-direction: column;
-      position: relative;
+.login{
+  @media screen and (min-width: 768px) {
       padding: 102px 63px;
   }
+}
 
-  .login_section {
-    @media screen and (max-width: 768px){
-        position: absolute;
-        z-index: 10;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+.login_section {
+  .logo_brand {
+    padding-left: $pTitle;
+  }
 
-    .logo_brand{
-      padding-left: $pTitle;
-    }
+  .subtitle {
+    @include fontStyle(600, 14px);
+    margin-top: 72px;
+    margin-bottom: 24px;
+    color: $font-color-white-1;
+    text-transform: uppercase;
+    padding-left: $pTitle;
+    
+  }
 
-    .subtitle {
-      @include fontStyle(600, 14px);
-      margin-top: 72px;
-      margin-bottom: 24px;
-      color: $colorFont2;
-      text-transform: uppercase;
-      padding-left: $pTitle;
-      @media screen and (max-width: 768px){
-        color: $colorFont;
-        text-align: center;
-        margin-top: 30px;
-      }
-    }
+  .title_login {
+    @include fontStyle(600, 24px);
+    padding-left: $pTitle;
+  }
 
-    .title_login {
-      @include fontStyle(600, 24px);
-      padding-left: $pTitle;
-      @media screen and (max-width: 768px){
-        color: $colorFont;
-      }
-    }
-
+  .input-field{
     form {
-      label {
-        @include fontStyle(600, 14px);
-        color: $colorFont2;
-        padding-left: 14px;
-        @media screen and (max-width: 768px){
-          color: $colorFont;
-        }
-      }
-
-      .input_form {
-        width: 350px;
-        height: 40px;
-        border-radius: 20px;
-        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
-        border: solid 1px #dfe2e6;
-        background-color: $colorFont;
-        padding-left: 44px;
-        @media screen and (max-width: 768px){
-          background: transparent;
-    
-        }
-      }
-
-      .input_email {
-        position: relative;
-
-        .icon1 {
-          @include iconPosition();
-          left: 12px;
-        }
-      }
-
-      .input_password {
-        position: relative;
-
-        .icon2 {
-          @include iconPosition();
-          left: 12px;
-        }
-
-        .icon3 {
-          @include iconPosition();
-          right: 12px;
-        }
-      }
-      
-      .button_group{
-        width: 350px;
-        padding-top: 30px;
-        margin-bottom: 13px;
-        display: flex;
-        justify-content: space-between;
-
-    
-
-        .btn{
-            @include btnDefault();
-            @include fontStyle(bold, 14px);
-            // @media screen and (max-width: 768px){
-            //   background: transparent;
-            // }
-          }
-
-        .btnLogin{
-          background-color: $color_Button1;
-          color: $colorFont;
-
-          &:hover{
-            background-color: $color_Button2;
-          color: $color_Button1;
-          }
-        }
-
-        .btnRegister{
-          &:hover{
-            background-color: $color_Button1;
-          color: $color_Button2;
-          }
-        }
-      }
-    }
-  }
-  
-  .overlay{
-    position: relative;
-
-    @media screen and (max-width: 768px){
-      &::after{
-        content:'';
-        position:absolute;
-        left:0; top:0;
-        width:100%; height:100%;
-        display:inline-block;
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(75, 75, 75, 0.5)), color-stop(100%,rgba(0, 0, 0, 0.5)));
-      }
+    label {
+      @include fontStyle(600, 14px);
+      color: $font-color-white-1;
+      padding-left: 14px;
     }
 
-    .image_section {
+    .input_form {
+      height: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
+      border: solid 1px #dfe2e6;
+      background-color: $font-color-white;
+      padding-left: 44px;
+    }
+
+    .input_email {
       position: relative;
-      width: 642px;
-      height: 697px;
-      @media screen and (max-width: 768px){
-        width: 100%;
+
+      .icon1 {
+        @include iconPosition();
+        left: 12px;
+      }
+    }
+
+    .input_password {
+      position: relative;
+
+      .icon2 {
+        @include iconPosition();
+        left: 12px;
+      }
+
+      .icon3 {
+        @include iconPosition();
+        right: 12px;
+      }
+    }
+
+    .button_group {
+      padding-top: 30px;
+      margin-bottom: 13px;
+      display: flex;
+      justify-content: space-between;
+
+      .btn {
+        @include btnDefault();
+        @include fontStyle(bold, 14px);
+      }
+
+      .btnLogin {
+        background-color: $color_Button1;
+        color: $font-color-white;
+        box-shadow: 0 10px 20px 0 rgba(189, 16, 224, 0.3);
+
+        &:hover {
+          background-color: $color_Button2;
+          color: $color_Button1;
+        }
+      }
+
+      .btnRegister {
+        &:hover {
+          background-color: $color_Button1;
+          color: $color_Button2;
+        }
       }
     }
   }
-  
+  }
+}
+.image_section {
+  position: relative;
+  width: 642px;
+  height: 697px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
