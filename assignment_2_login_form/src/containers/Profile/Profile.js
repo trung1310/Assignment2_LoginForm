@@ -11,9 +11,9 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { UPDATE_API } from "../../api";
 import { LOGIN_PATH } from '../../constants'
-import { APP_PROGRESS_STATUS, LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../constants/index";
+import { APP_PROGRESS_STATUS, LOCAL_STORAGE_ACCESS_TOKEN_KEY} from "../../constants/index";
 
-import { login, loginState } from "../../features/login/LoginSlice";
+import { login, clearLoginState } from "../../features/login/LoginSlice";
 
 
 export default function Profile() {
@@ -87,10 +87,8 @@ export default function Profile() {
 
   const handleClick = (e) => {
     e.preventDefault();
-
-    const { email, currentPassword } = fields;
-    localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
-    dispatch(loginState(email, currentPassword));  
+    localStorage.clear();
+    dispatch(clearLoginState());  
   }
 
   return (
@@ -105,7 +103,7 @@ export default function Profile() {
         <div className='profile'>
           <a className='avatar' href='#openAvatar'>
             <img alt='#img' className='image' src={fields.avatar} />
-            {/* <a className='edit' href='#editAvatar'><img alt='#img' className='icon' src={EditPhoto} /></a> */}
+            <a className='edit' href='#editAvatar'><img alt='#img' className='icon' src={EditPhoto} /></a>
           </a>
           <div className="row mb-2">
             <div className="form-group col-md-6">
