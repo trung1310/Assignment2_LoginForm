@@ -1,6 +1,7 @@
-import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom';
+import isEmpty from "lodash/isEmpty";
 
 import Image from "../../assets/images/solution-experts.png";
 import Brand_logo from "../../assets/images/brand-logo.svg";
@@ -9,49 +10,98 @@ import Icon2 from "../../assets/images/Suche02.svg";
 import Icon3 from "../../assets/images/Suche03.svg";
 
 import { register } from "../../features/register/RegisterSlice";
+import REDUCER_NAMES from "../../features/reducerNames";
+import { handleValidationForm } from "../../utils/validation";
+import { toast } from "react-toastify";
+import { APP_PROGRESS_STATUS } from "../../constants/index";
+import Loading from "../../components/Loading/Loading";
+import { LOGIN_PATH } from "../../constants/index";
 
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
-  const [emailRegisterValue, setEmailRegisterValue] = useState("");
-  const [nameRegisterValue, setNameRegisterValue] = useState("");
-  const [phoneRegisterValue, setPhoneRegisterValue] = useState("");
+  // const [emailRegisterValue, setEmailRegisterValue] = useState("");
+  // const [nameRegisterValue, setNameRegisterValue] = useState("");
+  // const [phoneRegisterValue, setPhoneRegisterValue] = useState("");
 
-  const [passwordRegisterValue, setPasswordRegisterValue] = useState("");
-  const [passwordRegisterValue_1, setPasswordRegisterValue_1] = useState("");
+  // const [passwordRegisterValue, setPasswordRegisterValue] = useState("");
+  // const [passwordRegisterValue_1, setPasswordRegisterValue_1] = useState("");
 
-  const handleFormSubmit = () => {
-    if (
-      !emailRegisterValue.trim() || 
-      !passwordRegisterValue.trim() || 
-      !nameRegisterValue.trim() ||
-      ! phoneRegisterValue.trim() ||
-      ! passwordRegisterValue_1.trim()
-    ) {
-      alert("Please input all fields");
-      return;
-    } else{
-      if(passwordRegisterValue !== passwordRegisterValue_1)
-      {
-      alert("Please input email and password");
-        return;
-      }
-      alert("Register Success!");
-    }
-    dispatch(register(emailRegisterValue.trim(), passwordRegisterValue.trim(), nameRegisterValue.trim(), phoneRegisterValue.trim()));
+  // const handleFormSubmit = () => {
+  //   if (
+  //     !emailRegisterValue.trim() || 
+  //     !passwordRegisterValue.trim() || 
+  //     !nameRegisterValue.trim() ||
+  //     ! phoneRegisterValue.trim() ||
+  //     ! passwordRegisterValue_1.trim()
+  //   ) {
+  //     alert("Please input all fields");
+  //     return;
+  //   } else{
+  //     if(passwordRegisterValue !== passwordRegisterValue_1)
+  //     {
+  //     alert("Please input email and password");
+  //       return;
+  //     }
+  //     alert("Register Success!");
+  //   }
+  //   dispatch(register(emailRegisterValue.trim(), passwordRegisterValue.trim(), nameRegisterValue.trim(), phoneRegisterValue.trim()));
    
-  }
+  // }
+  const { registerResponse } = useSelector(
+    (state) => state[REDUCER_NAMES.REGISTER]
+  );
 
-  let history = useHistory();
+  const [fields, setFields] = useState({
+    email: "",
+    password: "",
+    newPassword: "",
+    name: "",
+    phone: "",
+  });
+
+  useEffect(() => {
+    if (registerResponse.status === APP_PROGRESS_STATUS.FAILED) {
+      if (registerResponse.response) {
+        const msg = registerResponse.response.msg;
+        toast.error(msg ? msg : "Register failed !");
+      }
+    }
+    if (registerResponse.status === APP_PROGRESS_STATUS.SUCCESS) {
+      toast.success("Register new account success !");
+      history.push(LOGIN_PATH);
+    }
+  }, [registerResponse, history]);
+
+  const handleFormRegisterSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, newPassword, name, phone } = fields;
+    if (password !== newPassword) {
+      toast.warn("Pasword and new password must be the same");
+      return;
+    }
+    const error = handleValidationForm(fields);
+    if (!isEmpty(error)) {
+      toast.warn("Please input enough information to register account !");
+      return;
+    }
+    dispatch(
+      register(email.trim(), password.trim(), name.trim(), phone.trim())
+    );
+  };
 
   const handleClick = () => {
-    history.push("/login");
+    history.push(LOGIN_PATH);
   }
   
   return (
     <div className="container-fluid login_form">
+      <Loading
+        isLoading={registerResponse.status === APP_PROGRESS_STATUS.STARTING}
+      />
       <div className="row">
       <div className="login_section col-md-5">
         <img alt='#img' className="logo_brand" src={Brand_logo} />
@@ -59,7 +109,11 @@ export default function RegisterForm() {
         <h1 className="title_login col-sm-12">Login your account</h1>
 
         <div className='input-field col-md-10'>
-        <form className="form-group">
+        <form 
+        className="form-group"
+        autoComplete="on"
+        onSubmit={handleFormRegisterSubmit}
+        >
           <div className="form-group">
             <label className="labelEmail" htmlFor="email">
               Email
@@ -70,9 +124,10 @@ export default function RegisterForm() {
                 className="form-control input_form"
                 id="emailRegister"
                 placeholder="Enter your email"
-                onChange={(event) => {
-                  const email = event.target.value;
-                  setEmailRegisterValue(email);
+                value={fields.email}
+                onChange={(e) => {
+                  const email = e.currentTarget.value;
+                  setFields((prevState) => ({ ...prevState, email }));
                 }}
               />
               <img alt='#img' className="icon1" src={Icon1} />
@@ -89,9 +144,10 @@ export default function RegisterForm() {
                 className="form-control input_form"
                 id="passwordRegister"
                 placeholder="Enter your password"
-                onChange={(event) => {
-                  const password = event.target.value;
-                  setPasswordRegisterValue(password);
+                value={fields.password}
+                onChange={(e) => {
+                  const password = e.currentTarget.value;
+                  setFields((prevState) => ({ ...prevState, password }));
                 }}
               />
               <img alt='#img' className="icon2" src={Icon2} />
@@ -108,9 +164,10 @@ export default function RegisterForm() {
                 className="form-control input_form"
                 id="confirmPassRegister"
                 placeholder="Enter your password"
-                onChange={(event) => {
-                  const password1 = event.target.value;
-                  setPasswordRegisterValue_1(password1);
+                value={fields.newPassword}
+                onChange={(e) => {
+                  const newPassword = e.currentTarget.value;
+                  setFields((prevState) => ({ ...prevState, newPassword }));
                 }}
               />
               <img alt='#img' className="icon2" src={Icon2} />
@@ -127,9 +184,10 @@ export default function RegisterForm() {
                 className="form-control input_form"
                 id="fullNameRegister"
                 placeholder="Enter your name"
-                onChange={(event) => {
-                  const fullName = event.target.value;
-                  setNameRegisterValue(fullName);
+                value={fields.name}
+                onChange={(e) => {
+                  const name = e.currentTarget.value;
+                  setFields((prevState) => ({ ...prevState, name }));
                 }}
               />
               <img alt='#img' className="icon1" src={Icon1} />
@@ -145,9 +203,9 @@ export default function RegisterForm() {
                 className="form-control input_form"
                 id="phoneRegister"
                 placeholder="Enter your phone number"
-                onChange={(event) => {
-                  const phone = event.target.value;
-                  setPhoneRegisterValue(phone);
+                onChange={(e) => {
+                  const phone = e.currentTarget.value;
+                  setFields((prevState) => ({ ...prevState, phone }));
                 }}
               />
               <img alt='#img' className="icon1" src={Icon1} />
@@ -158,7 +216,7 @@ export default function RegisterForm() {
               <button className="btn btnRegister" type="button" onClick={handleClick}>
                 Back
               </button>
-            <button className="btn btnLogin" type="button" onClick={handleFormSubmit}>
+            <button className="btn btnLogin" type="submit">
               Submit
             </button>
           </div>
