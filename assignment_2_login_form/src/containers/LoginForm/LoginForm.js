@@ -103,6 +103,7 @@ export default function LoginForm() {
               <div className="input_password">
                 <input
                   type="password"
+                  autoComplete="on"
                   className="form-control input_form"
                   id="passwordLogin"
                   placeholder="Enter your password"

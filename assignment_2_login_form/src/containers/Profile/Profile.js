@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { useSelector } from "react-redux";
+import React, {useState, useEffect} from 'react';
+import {  useDispatch,  useSelector } from "react-redux";
 import {useHistory } from "react-router-dom";
 
 import './_profile.scss'
@@ -10,15 +10,23 @@ import REDUCER_NAMES from "../../features/reducerNames";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { UPDATE_API } from "../../api";
-import { DEFAULT_PATH } from '../../constants'
-import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../constants/index";
+import { LOGIN_PATH } from '../../constants'
+import { APP_PROGRESS_STATUS, LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../constants/index";
+
+import { login, loginState } from "../../features/login/LoginSlice";
+
 
 export default function Profile() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
 
   const { registerResponse } = useSelector(
     (state) => state[REDUCER_NAMES.REGISTER]
+  );
+
+  const {loginResponse} = useSelector(
+    (state) => state[REDUCER_NAMES.LOGIN]
   );
 
   const [fields, setFields] = useState({
@@ -30,6 +38,15 @@ export default function Profile() {
     confirmNewPassword: undefined,
     avatar: Avatar,
   });
+
+  useEffect(() => {
+    if (loginResponse.status === APP_PROGRESS_STATUS.FAILED) {
+      if(loginResponse.loginState){
+      toast.success("Logout success !");
+      history.push(LOGIN_PATH);
+      }
+    }
+  }, [loginResponse, history]);
   
 
   const handleFormSubmit = async (e) => {
@@ -68,9 +85,12 @@ export default function Profile() {
     }
   };
 
-  const handleClick = () => {
-    window.localStorage.clear();
-    history.push(DEFAULT_PATH);
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    const { email, currentPassword } = fields;
+    localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
+    dispatch(loginState(email, currentPassword));  
   }
 
   return (

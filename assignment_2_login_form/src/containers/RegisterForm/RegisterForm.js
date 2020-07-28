@@ -22,35 +22,6 @@ export default function RegisterForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
-  // const [emailRegisterValue, setEmailRegisterValue] = useState("");
-  // const [nameRegisterValue, setNameRegisterValue] = useState("");
-  // const [phoneRegisterValue, setPhoneRegisterValue] = useState("");
-
-  // const [passwordRegisterValue, setPasswordRegisterValue] = useState("");
-  // const [passwordRegisterValue_1, setPasswordRegisterValue_1] = useState("");
-
-  // const handleFormSubmit = () => {
-  //   if (
-  //     !emailRegisterValue.trim() || 
-  //     !passwordRegisterValue.trim() || 
-  //     !nameRegisterValue.trim() ||
-  //     ! phoneRegisterValue.trim() ||
-  //     ! passwordRegisterValue_1.trim()
-  //   ) {
-  //     alert("Please input all fields");
-  //     return;
-  //   } else{
-  //     if(passwordRegisterValue !== passwordRegisterValue_1)
-  //     {
-  //     alert("Please input email and password");
-  //       return;
-  //     }
-  //     alert("Register Success!");
-  //   }
-  //   dispatch(register(emailRegisterValue.trim(), passwordRegisterValue.trim(), nameRegisterValue.trim(), phoneRegisterValue.trim()));
-   
-  // }
   const { registerResponse } = useSelector(
     (state) => state[REDUCER_NAMES.REGISTER]
   );

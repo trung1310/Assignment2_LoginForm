@@ -37,12 +37,19 @@ export const loginSlice = createSlice({
             response: payload,
             };
         },
+        loginState: (state, { payload }) => {
+            state.loginResponse = {
+                status: APP_PROGRESS_STATUS.IDLE,
+                isLoginSuccess: false,
+                response: payload,
+            };
+        }
     },
 });
 
 const { actions, reducer } = loginSlice;
 
-export const { loginSuccess, loginFail, loginAttempt } = actions;
+export const { loginSuccess, loginFail, loginAttempt, loginState } = actions;
 export default reducer;
 
 export const login = (email, password) => async (dispatch) => {

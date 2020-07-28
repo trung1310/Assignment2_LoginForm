@@ -8,6 +8,9 @@ const override = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (min-width: 768px){
+    color: red;
+  }
 `;
 
 const Loading = ({ isLoading }: { isLoading: boolean }) => {
