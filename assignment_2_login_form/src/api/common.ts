@@ -1,4 +1,7 @@
+import { Profile } from './../features/profile/types';
 import axios from 'axios';
+import { retrieveToken } from '../utils/LocalStorage/LocalStorage';
+
 import {
     LoginResponseType,
     RegisterResponseType,
@@ -29,3 +32,17 @@ export async function registerAccount(
         phone,
     });
 }
+
+export async function updateProfile(updateData: Profile) {
+    return await axios.patch<UpdatedProfileResponseType>(
+        UPDATE_PROFILE_API,
+        { ...updateData },
+        {
+            headers: {
+                Authorization: `Bearer ${retrieveToken()}`,
+            },
+        }
+    );
+}
+
+
