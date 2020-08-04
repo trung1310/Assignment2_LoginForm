@@ -10,6 +10,7 @@ import {
     LOGIN_API,
     REGISTER_API,
     UPDATE_AVATAR_API,
+    UPDATE_PASSWORD_API
 } from './types';
 
 export async function loginSystem(email: string, password: string) {
@@ -54,6 +55,21 @@ export async function uploadAvatar(file: File) {
             Authorization: `Bearer ${retrieveToken()}`,
         },
     });
+}
+
+export async function updatePassword(
+    newPassword: string,
+    currentPassword: string
+) {
+    return axios.post(
+        UPDATE_PASSWORD_API,
+        { password: newPassword, currentPassword },
+        {
+            headers: {
+                Authorization: `Bearer ${retrieveToken()}`,
+            },
+        }
+    );
 }
 
 

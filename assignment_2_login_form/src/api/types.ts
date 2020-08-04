@@ -3,6 +3,7 @@ const LOGIN_API = "http://api.terralogic.ngrok.io/api/login";
 const REGISTER_API = "http://api.terralogic.ngrok.io/api/register";
 const UPDATE_PROFILE_API = "http://api.terralogic.ngrok.io/api/update";
 const UPDATE_AVATAR_API = "http://api.terralogic.ngrok.io/api/upload";
+const UPDATE_PASSWORD_API = "http://api.terralogic.ngrok.io/api/changePassword";
 
 type CommonResponseType = {
     status: number;
@@ -39,4 +40,4 @@ export type {
     UpdatedProfileResponseType
 };
 
-export { LOGIN_API, REGISTER_API, UPDATE_AVATAR_API, UPDATE_PROFILE_API, BASE_API };
+export { LOGIN_API, REGISTER_API, UPDATE_AVATAR_API, UPDATE_PROFILE_API, UPDATE_PASSWORD_API, BASE_API };
