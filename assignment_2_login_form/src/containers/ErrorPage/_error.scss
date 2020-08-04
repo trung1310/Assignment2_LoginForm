@@ -1,0 +1,26 @@
+@import "../../components/Button/button";
+@import '../../helper/variables';
+
+.error{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+        .btn{
+            @include btnDefault();
+            @include fontStyle(bold, 14px);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            &:hover {
+                background-color: $color_Button1;
+                color: $color_Button2;
+            }
+        }
+    
+    h1{
+        color: $font-color-pink;
+        
+    }
+}
+

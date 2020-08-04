@@ -11,6 +11,7 @@ import './App.scss';
 import LoginForm from './containers/LoginForm/LoginForm';
 import Profile from './containers/Profile/Profile';
 import RegisterForm from './containers/RegisterForm/RegisterForm';
+import ErrorPage from './containers/ErrorPage/ErrorPage';
 
 
 import { DEFAULT_PATH, LOGIN_PATH, REGISTER_PATH } from './constants/index';
@@ -41,6 +42,7 @@ const AppRoute = () => {
                     <Route exact path={DEFAULT_PATH}>
                         {isLoggedIn ? <Profile /> : <Redirect to={LOGIN_PATH} />}
                     </Route>
+                    <Route component={ErrorPage} />
                 </Switch>
             </div>
         </Router>
