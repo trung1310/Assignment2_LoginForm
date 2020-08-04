@@ -7,12 +7,15 @@ import {
     retrieveUserProfile,
     storeUpdatedUserData,
 } from "../../utils/LocalStorage/LocalStorage";
-import { uploadAvatar } from "../../api/common";
+import { uploadAvatar, updatePassword } from "../../api/common";
 import { BASE_API } from "../../api/types";
 import {
     updateProfileAttempt,
     updateProfile,
     updateProfileFail,
+    updatePasswordAttempt,
+    updatePasswordSuccess,
+    updatePasswordFail
 } from "./ProfileSlice";
 
 const updateProfileAsync = (updatedProfile: Profile, file?: File) => async (
@@ -53,4 +56,25 @@ const loadProfileFromLocalStorage = () => async (dispatch: Dispatch) => {
     );
 };
 
-export { updateProfileAsync, loadProfileFromLocalStorage };
+const updatePasswordAsync = (
+    newPassword: string,
+    currentPassword: string
+) => async (dispatch: Dispatch) => {
+    dispatch(updatePasswordAttempt(APP_PROGRESS_STATUS.STARTING));
+
+    try {
+        const updatePasswordRes = await updatePassword(
+            newPassword,
+            currentPassword
+        );
+        dispatch(updatePasswordAttempt(APP_PROGRESS_STATUS.SUCCESS));
+        dispatch(updatePasswordSuccess(updatePasswordRes.data));
+    } catch (error) {
+        dispatch(updatePasswordAttempt(APP_PROGRESS_STATUS.FAILED));
+        if (error.response && error.response.data) {
+            dispatch(updatePasswordFail(error.response.data));
+        }
+    }
+}
+
+export { updateProfileAsync, loadProfileFromLocalStorage, updatePasswordAsync };

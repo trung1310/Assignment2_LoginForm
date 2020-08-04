@@ -11,6 +11,10 @@ const profileSlice = createSlice({
             status: APP_PROGRESS_STATUS.IDLE,
             response: {} as { msg: string; status: number; data: Profile },
         },
+        updatePasswordResponse: {
+            status: APP_PROGRESS_STATUS.IDLE,
+            response: {},
+        },
     },
     reducers: {
         updateProfileAttempt: (state, { payload }: { payload: string }) => {
@@ -29,6 +33,15 @@ const profileSlice = createSlice({
             state.updateProfileResponse.response.msg = payload.msg;
             state.updateProfileResponse.response.status = payload.status;
         },
+        updatePasswordAttempt: (state, action) => {
+            state.updatePasswordResponse.status = action.payload;
+        },
+        updatePasswordSuccess: (state, action) => {
+            state.updatePasswordResponse.status = action.payload;
+        },
+        updatePasswordFail: (state, action) => {
+            state.updatePasswordResponse.status = action.payload;
+        }
     }
 });
 
@@ -38,5 +51,8 @@ export const {
     updateProfile,
     updateProfileFail,
     updateProfileAttempt,
+    updatePasswordAttempt,
+    updatePasswordSuccess,
+    updatePasswordFail
 } = actions;
 export default reducer;

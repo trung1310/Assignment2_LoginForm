@@ -8,7 +8,10 @@ import Icon3 from "../../assets/images/Suche03.svg";
 
 import { CLEAR_STORE, RootState } from "../../store";
 
-import { updateProfileAsync } from "../../features/profile/async-actions";
+import {
+  updateProfileAsync,
+  updatePasswordAsync
+} from "../../features/profile/async-actions";
 import Loading from "../../components/Loading/Loading";
 import { APP_PROGRESS_STATUS } from "../../constants";
 import { toast } from "react-toastify";
@@ -71,7 +74,14 @@ export default function Profile() {
   }, [updateProfileStatus]);
 
   const onSubmit = (values: FieldStates) => {
-    const { name, phone, email } = values;
+    const {
+      name,
+      phone,
+      email,
+      currentPassword,
+      newPassword,
+      confirmNewPassword,
+    } = values;
     dispatch(
       updateProfileAsync(
         {
@@ -85,6 +95,12 @@ export default function Profile() {
         file ? file : undefined
       )
     );
+    if (newPassword && currentPassword && confirmNewPassword) {
+      if (newPassword === confirmNewPassword) {
+        console.log('RUN UPDATE PASSS')
+        dispatch(updatePasswordAsync(newPassword, currentPassword));
+      }
+    }
     setFile(undefined);
   };
 
@@ -214,6 +230,7 @@ export default function Profile() {
               </label>
               <div className="input_password">
                 <input
+                  ref={register}
                   name="currentPassword"
                   autoComplete="new-password"
                   className="form-control inputPass"
@@ -232,12 +249,12 @@ export default function Profile() {
               </label>
               <div className="input_password">
                 <input
+                  ref={register}
                   name="newPassword"
                   autoComplete="new-password"
                   className="form-control inputPass"
                   type="password"
                   id="newPasswordInput"
-                  value={fields.newPassword}
                 />
                 <img alt="#img" className="icon3" src={Icon3} />
               </div>
@@ -249,11 +266,11 @@ export default function Profile() {
               </label>
               <div className="input_password">
                 <input
+                  ref={register}
                   name="confirmNewPassword"
                   className="form-control inputPass"
                   type="password"
                   id="confirmPasswordInput"
-                  value={fields.confirmNewPassword}
                 />
                 <img alt="#img" className="icon3" src={Icon3} />
               </div>
