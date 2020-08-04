@@ -6,31 +6,38 @@ import { loginAttempt, loginSuccess, loginFail } from './LoginSlice';
 import { updateProfile } from '../profile/ProfileSlice';
 import { Profile } from './../profile/types';
 
-const loginAsync = (email: string, password: string) => async (
+const loginAsync = (
+    email: string,
+    password: string,
+    successCallback = () => { },
+    failureCallback = () => { }
+) => async (
     dispatch: (arg0: { payload: any; type: string }) => void
 ) => {
-    dispatch(loginAttempt());
-    try {
-        const res = await loginSystem(email, password);
-        if (res.data) {
-            const { token } = res.data;
-            const decodedProfile: Profile = jwt(token);
-            storeUserDataWithDecodedJWT(res.data.token, decodedProfile);
-            dispatch(
-                updateProfile({
-                    data: decodedProfile,
-                    msg: "Decode profile success.",
-                    status: 1,
-                })
-            );
-            dispatch(loginSuccess(res.data));
+        dispatch(loginAttempt());
+        try {
+            const res = await loginSystem(email, password);
+            if (res.data) {
+                const { token } = res.data;
+                const decodedProfile: Profile = jwt(token);
+                storeUserDataWithDecodedJWT(res.data.token, decodedProfile);
+                dispatch(
+                    updateProfile({
+                        data: decodedProfile,
+                        msg: "Decode profile success.",
+                        status: 1,
+                    })
+                );
+                dispatch(loginSuccess(res.data));
+                successCallback();
+            }
+        } catch (error) {
+            if (error.response && error.response.data) {
+                dispatch(loginFail(error.response.data));
+            }
+            failureCallback();
         }
-    } catch (error) {
-        if (error.response && error.response.data) {
-            dispatch(loginFail(error.response.data));
-        }
-    }
-};
+    };
 
 export { loginAsync };
 

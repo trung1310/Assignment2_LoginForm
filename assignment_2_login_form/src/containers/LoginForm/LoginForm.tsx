@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -28,23 +28,11 @@ export default function LoginForm() {
   const loginStatus = useSelector(
     (state: RootState) => state.login.loginResponse.status
   );
-  const loginResponse = useSelector(
-    (state: RootState) => state.login.loginResponse.response
-  );
 
   const [fields, setFields] = useState<FieldStates>({
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    if (loginStatus === APP_PROGRESS_STATUS.SUCCESS) {
-      toast.success("Login Success");
-    }
-    if (loginStatus === APP_PROGRESS_STATUS.FAILED && !isEmpty(loginResponse)) {
-      toast.error("Email or password is incorrect !");
-    }
-  }, [loginStatus, loginResponse]);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,7 +42,22 @@ export default function LoginForm() {
       toast.warn("Please input valid email and password");
       return;
     }
-    dispatch(loginAsync(email.trim(), password.trim()));
+
+    const successCallback = () => {
+      toast.success('Login Success');
+    }
+
+    const failureCallback = () => {
+      toast.error('Email or password is incorrect !');
+    }
+    dispatch(
+      loginAsync(
+        email.trim(),
+        password.trim(),
+        successCallback,
+        failureCallback
+      )
+    );
   };
 
   const handleClick = () => {
