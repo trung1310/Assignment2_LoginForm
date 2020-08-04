@@ -16,7 +16,7 @@ import { APP_PROGRESS_STATUS } from "../../constants/index";
 import Loading from "../../components/Loading/Loading";
 import { LOGIN_PATH } from "../../constants/index";
 import { registerAccountAsync } from "../../features/register/async-actions";
-
+import { clearRegisterState } from '../../features/register/RegisterSlice';
 
 type FieldStates = {
   email: string,
@@ -48,19 +48,21 @@ export default function RegisterForm() {
       if (registerResponse.response) {
         const msg = registerResponse.response.msg;
         toast.error(msg ? msg : "Register failed !");
+        dispatch(clearRegisterState());
       }
     }
     if (registerResponse.status === APP_PROGRESS_STATUS.SUCCESS) {
       toast.success("Register new account success !");
       history.push(LOGIN_PATH);
+      dispatch(clearRegisterState());
     }
-  }, [registerResponse, history]);
+  }, [registerResponse, history, dispatch]);
 
   const handleFormRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password, newPassword, name, phone } = fields;
     if (password !== newPassword) {
-      toast.warn("Pasword and new password must be the same");
+      toast.warn("Password and new password must be the same");
       return;
     }
     const error = handleValidationForm(fields);

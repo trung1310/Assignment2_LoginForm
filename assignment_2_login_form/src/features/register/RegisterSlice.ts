@@ -31,9 +31,17 @@ export const registerSlice = createSlice({
         response: payload,
       }
     },
+    clearRegisterState: (state) => {
+      state.registerResponse = {} as any;
+    },
   },
 });
 
 const { actions, reducer } = registerSlice;
-export const { registerAttempt, registerSuccess, registerFail } = actions;
+export const {
+  registerAttempt,
+  registerSuccess,
+  registerFail,
+  clearRegisterState
+} = actions;
 export default reducer;
