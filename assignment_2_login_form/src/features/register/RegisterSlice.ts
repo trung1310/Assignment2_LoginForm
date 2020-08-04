@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import { APP_PROGRESS_STATUS } from '../../constants/index';
-import REDUCER_NAMES from "../reducerNames";
-import { RegisterResponseType } from "../../api/types";
+import REDUCER_NAMES from '../reducerNames';
+import { RegisterResponseType } from '../../api/types';
 
 
 export const registerSlice = createSlice({

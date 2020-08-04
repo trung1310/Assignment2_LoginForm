@@ -1,9 +1,9 @@
-const BASE_API = "http://api.terralogic.ngrok.io";
-const LOGIN_API = "http://api.terralogic.ngrok.io/api/login";
-const REGISTER_API = "http://api.terralogic.ngrok.io/api/register";
-const UPDATE_PROFILE_API = "http://api.terralogic.ngrok.io/api/update";
-const UPDATE_AVATAR_API = "http://api.terralogic.ngrok.io/api/upload";
-const UPDATE_PASSWORD_API = "http://api.terralogic.ngrok.io/api/changePassword";
+const BASE_API = 'http://api.terralogic.ngrok.io';
+const LOGIN_API = 'http://api.terralogic.ngrok.io/api/login';
+const REGISTER_API = 'http://api.terralogic.ngrok.io/api/register';
+const UPDATE_PROFILE_API = 'http://api.terralogic.ngrok.io/api/update';
+const UPDATE_AVATAR_API = 'http://api.terralogic.ngrok.io/api/upload';
+const UPDATE_PASSWORD_API = 'http://api.terralogic.ngrok.io/api/changePassword';
 
 type CommonResponseType = {
     status: number;

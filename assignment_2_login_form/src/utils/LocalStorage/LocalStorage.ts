@@ -1,10 +1,10 @@
 import { Profile } from './../../features/profile/types';
 
 // localStorage key constants
-export const LOCAL_STORAGE_LOGIN_STATUS_KEY = "@login_status";
-export const LOCAL_STORAGE_ACCESS_TOKEN_KEY = "@access_token";
-export const LOCAL_STORAGE_REGISTER_PROFILE_INFO = "@register_profile_info";
-export const LOCAL_STORAGE_PROFILE = "@profile";
+export const LOCAL_STORAGE_LOGIN_STATUS_KEY = '@login_status';
+export const LOCAL_STORAGE_ACCESS_TOKEN_KEY = '@access_token';
+export const LOCAL_STORAGE_REGISTER_PROFILE_INFO = '@register_profile_info';
+export const LOCAL_STORAGE_PROFILE = '@profile';
 
 // User
 const storeUserDataWithDecodedJWT = (token: string, decodedUser: Profile) => {
@@ -19,7 +19,7 @@ const storeUpdatedUserData = (updatedUserData: Profile) => {
 
 const retrieveUserProfile = () => {
     const userProfile = JSON.parse(
-        localStorage.getItem(LOCAL_STORAGE_PROFILE) || "{}"
+        localStorage.getItem(LOCAL_STORAGE_PROFILE) || '{}'
     ) as Profile;
     return userProfile;
 };

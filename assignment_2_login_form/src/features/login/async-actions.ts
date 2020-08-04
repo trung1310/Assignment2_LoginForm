@@ -1,7 +1,7 @@
-import jwt from "jwt-decode";
+import jwt from 'jwt-decode';
 
 import { loginSystem } from '../../api/common';
-import { storeUserDataWithDecodedJWT } from "../../utils/LocalStorage/LocalStorage";
+import { storeUserDataWithDecodedJWT } from '../../utils/LocalStorage/LocalStorage';
 import { loginAttempt, loginSuccess, loginFail } from './LoginSlice';
 import { updateProfile } from '../profile/ProfileSlice';
 import { Profile } from './../profile/types';
@@ -24,7 +24,7 @@ const loginAsync = (
                 dispatch(
                     updateProfile({
                         data: decodedProfile,
-                        msg: "Decode profile success.",
+                        msg: 'Decode profile success.',
                         status: 1,
                     })
                 );

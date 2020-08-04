@@ -1,14 +1,14 @@
-import { Dispatch } from "redux";
+import { Dispatch } from 'redux';
 
-import { Profile } from "./types";
-import { updateProfile as updateProfileAPI } from "../../api";
-import { APP_PROGRESS_STATUS } from "../../constants";
+import { Profile } from './types';
+import { updateProfile as updateProfileAPI } from '../../api';
+import { APP_PROGRESS_STATUS } from '../../constants';
 import {
     retrieveUserProfile,
     storeUpdatedUserData,
-} from "../../utils/LocalStorage/LocalStorage";
-import { uploadAvatar, updatePassword } from "../../api/common";
-import { BASE_API } from "../../api/types";
+} from '../../utils/LocalStorage/LocalStorage';
+import { uploadAvatar, updatePassword } from '../../api/common';
+import { BASE_API } from '../../api/types';
 import {
     updateProfileAttempt,
     updateProfile,
@@ -16,7 +16,7 @@ import {
     updatePasswordAttempt,
     updatePasswordSuccess,
     updatePasswordFail
-} from "./ProfileSlice";
+} from './ProfileSlice';
 
 const updateProfileAsync = (updatedProfile: Profile, file?: File) => async (
     dispatch: Dispatch
@@ -50,7 +50,7 @@ const loadProfileFromLocalStorage = () => async (dispatch: Dispatch) => {
     dispatch(
         updateProfile({
             data: userProfile,
-            msg: "Load profile from local storage success.",
+            msg: 'Load profile from local storage success.',
             status: 1,
         })
     );

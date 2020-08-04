@@ -1,9 +1,9 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import loginReducer from "./features/login/LoginSlice";
-import registerReducer from "./features/register/RegisterSlice";
-import profileReducer from "./features/profile/ProfileSlice";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import loginReducer from './features/login/LoginSlice';
+import registerReducer from './features/register/RegisterSlice';
+import profileReducer from './features/profile/ProfileSlice';
 
-const CLEAR_STORE = "CLEAR_STORE";
+const CLEAR_STORE = 'CLEAR_STORE';
 
 const appReducer = combineReducers({
     login: loginReducer,

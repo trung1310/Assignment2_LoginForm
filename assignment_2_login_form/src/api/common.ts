@@ -49,7 +49,7 @@ export async function updateProfile(updateData: Profile) {
 export async function uploadAvatar(file: File) {
     const fileBlob = new Blob([file], { type: 'image/png' });
     const formData = new FormData();
-    formData.append("Avatar", fileBlob, file.name);
+    formData.append('Avatar', fileBlob, file.name);
     return axios.post(UPDATE_AVATAR_API, formData, {
         headers: {
             Authorization: `Bearer ${retrieveToken()}`,

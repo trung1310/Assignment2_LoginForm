@@ -1,6 +1,6 @@
-import React from "react";
-import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
+import React from 'react';
+import { css } from '@emotion/core';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const override = css`
   position: absolute;
@@ -18,7 +18,7 @@ const Loading = ({ isLoading }: { isLoading: boolean }) => {
     <ClipLoader
       css={override}
       size={80}
-      color={"#123abc"}
+      color={'#123abc'}
       loading={isLoading}
     />
   );

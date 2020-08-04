@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { APP_PROGRESS_STATUS } from "../../constants";
-import { UpdatedProfileResponseType } from "../../api/types";
-import REDUCER_NAMES from "../reducerNames";
-import { Profile } from "./types";
+import { createSlice } from '@reduxjs/toolkit';
+import { APP_PROGRESS_STATUS } from '../../constants';
+import { UpdatedProfileResponseType } from '../../api/types';
+import REDUCER_NAMES from '../reducerNames';
+import { Profile } from './types';
 
 const profileSlice = createSlice({
     name: REDUCER_NAMES.PROFILE,

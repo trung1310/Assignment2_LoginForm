@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { APP_PROGRESS_STATUS } from "../../constants/index";
-import REDUCER_NAMES from "../reducerNames";
+import { createSlice } from '@reduxjs/toolkit';
+import { APP_PROGRESS_STATUS } from '../../constants/index';
+import REDUCER_NAMES from '../reducerNames';
 import { LoginResponseType } from '../../api/types'
 
 const loginSlice = createSlice({
