@@ -34,6 +34,12 @@ export default function LoginForm() {
     password: '',
   });
 
+  const [passwordShow, setPasswordShow] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShow(passwordShow ? false : true);
+  }
+
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password } = fields;
@@ -106,7 +112,7 @@ export default function LoginForm() {
                 </label>
                 <div className='input_password'>
                   <input
-                    type='password'
+                    type={passwordShow ? 'text' : 'password'}
                     autoComplete='on'
                     className='form-control input_form'
                     id='passwordLogin'
@@ -117,7 +123,7 @@ export default function LoginForm() {
                     }}
                   />
                   <img alt='#img' className='icon2' src={Icon2} />
-                  <img alt='#img' className='icon3' src={Icon3} />
+                  <img alt='#img' className='icon3' src={Icon3} onClick={togglePassword} />
                 </div>
               </div>
 

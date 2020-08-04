@@ -17,6 +17,7 @@
         .icon3 {
           @include iconPosition();
           right: 12px;
+          cursor: pointer;
         }
       }
 

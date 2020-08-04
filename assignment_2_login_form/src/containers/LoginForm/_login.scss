@@ -67,6 +67,7 @@ $pTitle: 15px;
       .icon3 {
         @include iconPosition();
         right: 12px;
+        cursor: pointer;
       }
     }
 
@@ -106,6 +107,7 @@ $pTitle: 15px;
   position: relative;
   width: 642px;
   height: 697px;
+  object-fit:cover;
   @media screen and (max-width: 768px) {
     display: none;
   }

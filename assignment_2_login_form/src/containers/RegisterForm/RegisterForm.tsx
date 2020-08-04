@@ -42,6 +42,18 @@ export default function RegisterForm() {
     phone: '',
   });
 
+  const [passwordShow, setPasswordShow] = useState(false);
+  const [passwordShow_1, setPasswordShow_1] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShow(passwordShow ? false : true);
+  }
+
+  const togglePassword_1 = () => {
+    setPasswordShow_1(passwordShow_1 ? false : true);
+  }
+
+
   const handleFormRegisterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password, newPassword, name, phone } = fields;
@@ -126,7 +138,7 @@ export default function RegisterForm() {
                 </label>
                 <div className='input_password'>
                   <input
-                    type='password'
+                    type={passwordShow ? 'text' : 'password'}
                     className='form-control input_form'
                     id='passwordRegister'
                     placeholder='Enter your password'
@@ -137,7 +149,7 @@ export default function RegisterForm() {
                     }}
                   />
                   <img alt='#img' className='icon2' src={Icon2} />
-                  <img alt='#img' className='icon3' src={Icon3} />
+                  <img alt='#img' className='icon3' src={Icon3} onClick={togglePassword} />
                 </div>
               </div>
               <div className='form-group'>
@@ -146,7 +158,7 @@ export default function RegisterForm() {
                 </label>
                 <div className='input_confirmPassword'>
                   <input
-                    type='password'
+                    type={passwordShow_1 ? 'text' : 'password'}
                     className='form-control input_form'
                     id='confirmPassRegister'
                     placeholder='Enter your password'
@@ -157,7 +169,7 @@ export default function RegisterForm() {
                     }}
                   />
                   <img alt='#img' className='icon2' src={Icon2} />
-                  <img alt='#img' className='icon3' src={Icon3} />
+                  <img alt='#img' className='icon3' src={Icon3} onClick={togglePassword_1} />
                 </div>
               </div>
               <div className='form-group'>
