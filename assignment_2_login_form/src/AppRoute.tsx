@@ -29,9 +29,11 @@ const AppRoute = () => {
     }, [dispatch]);
 
     const isLoggedIn = !isEmpty(userProfile);
+
     return (
         <Router>
             <div className='App'>
+
                 <Switch>
                     <Route exact path={LOGIN_PATH}>
                         {isLoggedIn ? <Redirect to={DEFAULT_PATH} /> : <LoginForm />}

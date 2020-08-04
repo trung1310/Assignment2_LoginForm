@@ -10,7 +10,7 @@ import Icon1 from '../../assets/images/Suche.svg';
 import Icon2 from '../../assets/images/Suche02.svg';
 import Icon3 from '../../assets/images/Suche03.svg';
 import { loginAsync } from '../../features/login/async-actions';
-import { handleValidationForm } from '../../utils/validation';
+import { handleValidationForm } from '../../utils/Validation/validation';
 import { APP_PROGRESS_STATUS } from '../../constants/index';
 import { REGISTER_PATH } from '../../constants/index';
 import Loading from '../../components/Loading/Loading';

@@ -10,7 +10,7 @@ import Icon2 from '../../assets/images/Suche02.svg';
 import Icon3 from '../../assets/images/Suche03.svg';
 
 import REDUCER_NAMES from '../../features/reducerNames';
-import { handleValidationForm } from '../../utils/validation';
+import { handleValidationForm } from '../../utils/Validation/validation';
 import { toast } from 'react-toastify';
 import { APP_PROGRESS_STATUS } from '../../constants/index';
 import Loading from '../../components/Loading/Loading';
