@@ -34,11 +34,21 @@ export default function LoginForm() {
     password: '',
   });
 
+
   const [passwordShow, setPasswordShow] = useState(false);
 
   const togglePassword = () => {
     setPasswordShow(passwordShow ? false : true);
   }
+
+  const [rememberLogin, setRememberLogin] = useState(false);
+
+  const rememberPaswordOnChange = () => {
+    const rememberPassword = !rememberLogin;
+    setRememberLogin(rememberPassword);
+    localStorage.setItem('rememberUser', rememberPassword.toString());
+  }
+
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -150,6 +160,7 @@ export default function LoginForm() {
                   type='checkbox'
                   className='form-check-input input_checkBoxPassword'
                   id='checkboxPassword'
+                  onChange={rememberPaswordOnChange}
                 />
                 <label className='form-check-label' htmlFor='checkboxPassword'>
                   Remember password
